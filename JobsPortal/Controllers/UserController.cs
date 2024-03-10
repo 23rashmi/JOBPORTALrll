@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using log4net;
 using System.Net;
 using System.IO;
+using System.Text;
 
 namespace JobsPortal.Controllers
 {
@@ -305,14 +306,38 @@ namespace JobsPortal.Controllers
 
 
         }
+        //public FileResult Download(string path)
+        //{
+        //    byte[] file = System.IO.File.ReadAllBytes(path);
+        //    string filename = Path.GetFileName(path);
+        //    return File(file, System.Net.Mime.MediaTypeNames.Application.Octet, filename);
+        //    //return RedirectToAction("Index");
+        //}
         public FileResult Download(string path)
         {
-            byte[] file = System.IO.File.ReadAllBytes(path);
-            string filename = Path.GetFileName(path);
-            return File(file, System.Net.Mime.MediaTypeNames.Application.Octet, filename);
-            //return RedirectToAction("Index");
-        }
+            try
+            {
+                if (path == null)
+                {
+                    // Handle the case where path is null, for example, by returning an error message or redirecting to an error page.
+                    // You can customize this part based on your application's requirements.
+                    return File(Encoding.UTF8.GetBytes("Invalid file path"), "text/plain", "error.txt");
+                }
 
+                byte[] file = System.IO.File.ReadAllBytes(path);
+                string filename = Path.GetFileName(path);
+                return File(file, System.Net.Mime.MediaTypeNames.Application.Octet, filename);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for further analysis (optional).
+                // logger.LogError($"Error downloading file: {ex.Message}");
+
+                // Redirect to an error page or return an error message.
+                // You can customize this part based on your application's requirements.
+                return File(Encoding.UTF8.GetBytes($"Error downloading file: {ex.Message}"), "text/plain", "error.txt");
+            }
+        }
 
 
 

@@ -22,9 +22,9 @@ namespace JobsPortal.Helper
             {
                 // Configuration settings from the Web.config file
                 string HostAddress = "smtp.gmail.com";
-                string FormEmailId = "shreyachinmayi@gmail.com";
+                string FormEmailId = "priye98priya@gmail.com";
 
-                string Password = "jlyy lcai qauk kpvd";
+                string Password = "aohd tkjf fwst ubwp";
                 string Port = "587";
 
                 // Create a MailMessage
