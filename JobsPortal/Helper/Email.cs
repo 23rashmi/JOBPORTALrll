@@ -24,7 +24,7 @@ namespace JobsPortal.Helper
                 string HostAddress = "smtp.gmail.com";
                 string FormEmailId = "priye98priya@gmail.com";
 
-                string Password = "aohd tkjf fwst ubwp";
+                string Password = "pfwp jejb uczf ajvr";
                 string Port = "587";
 
                 // Create a MailMessage
